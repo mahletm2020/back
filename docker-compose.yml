@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+
+  hasura:
+    image: hasura/graphql-engine:v2.35.0
+    ports:
+      - "9701:8080"
+ 
+    extra_hosts:
+        - "localhost:host-gateway"
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgresql://postgres:password@localhost:5432/techpulsedb
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_GRAPHQL_ADMIN_SECRET: catcatsecret2
+
+volumes:
+  postgres_data:
+
